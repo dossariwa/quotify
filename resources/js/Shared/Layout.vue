@@ -69,19 +69,22 @@
                         <li v-for="item in navigation" :key="item.name">
                           <NavbarLink
                             :href="item.href"
+                            :active="$page.component === item.name"
                             :class="[
                               item.current
-                                ? 'bg-gray-100 text-gray-900'
-                                : 'text-gray-900 hover:text-teal-600 hover:bg-gray-100',
+                                ? 'text-gray-900 hover:text-teal-600  hover:bg-gray-50'
+                                : 'hover:text-teal-600 hover:bg-gray-50',
                               'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                             ]"
                           >
                             <component
                               :is="item.icon"
+                              class="active:text-teal-600"
                               :class="[
                                 item.current
-                                  ? 'text-gray-900'
-                                  : 'text-gray-400 group-hover:text-teal-600',
+                                  ? 'active:text-teal-600 focus:text-teal-600'
+                                  : 'active:text-teal-600 focus:text-teal-600 group-hover:text-teal-600  hover:text-teal-600 hover:bg-gray-50',
+
                                 'h-6 w-6 shrink-0',
                               ]"
                               aria-hidden="true"
@@ -108,27 +111,36 @@
                               'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                             ]"
                           >
-                            <span
+                            <component
+                              :is="library.icon"
+                              class="active:text-teal-600"
                               :class="[
                                 library.current
-                                  ? 'text-gray-900 border-gray-600'
-                                  : 'text-gray-400 border-gray-200 group-hover:border-teal-600 group-hover:text-teal-600',
-                                'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white',
+                                  ? 'active:text-teal-600 focus:text-teal-600'
+                                  : 'active:text-teal-600 focus:text-teal-600 group-hover:text-teal-600  hover:text-teal-600 hover:bg-gray-50',
+
+                                'h-6 w-6 shrink-0',
                               ]"
-                              >{{ library.initial }}</span
-                            >
-                            <span class="truncate">{{ library.name }}</span>
+                              aria-hidden="true"
+                            />
+                            {{ library.name }}
                           </NavbarLink>
                         </li>
                       </ul>
                     </li>
                     <li class="mt-auto">
                       <NavbarLink
-                        href="#"
-                        class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 hover:text-teal-600"
+                        href="/settings"
+                        :active="$page.component === 'Settings'"
+                        class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 hover:text-teal-600"
                       >
                         <Cog6ToothIcon
-                          class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-teal-600"
+                          v-slot="{ active }"
+                          :class="[
+                            active
+                              ? 'h-6 w-6 shrink-0 text-gray-400'
+                              : 'h-6 w-6 shrink-0 group-hover:text-teal-600',
+                          ]"
                           aria-hidden="true"
                         />
                         Settings
@@ -170,19 +182,22 @@
                 <li v-for="item in navigation" :key="item.name">
                   <NavbarLink
                     :href="item.href"
+                    :active="$page.component === item.name"
                     :class="[
                       item.current
-                        ? 'bg-gray-50 text-teal-600'
-                        : 'text-gray-700 hover:text-teal-600 hover:bg-gray-50',
+                        ? 'text-gray-900 hover:text-teal-600  hover:bg-gray-50'
+                        : 'hover:text-teal-600 hover:bg-gray-50',
                       'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                     ]"
                   >
                     <component
                       :is="item.icon"
+                      class="active:text-teal-600"
                       :class="[
                         item.current
-                          ? 'text-teal-600'
-                          : 'text-gray-400 group-hover:text-teal-600',
+                          ? 'active:text-teal-600 focus:text-teal-600'
+                          : 'active:text-teal-600 focus:text-teal-600 group-hover:text-teal-600  hover:text-teal-600 hover:bg-gray-50',
+
                         'h-6 w-6 shrink-0',
                       ]"
                       aria-hidden="true"
@@ -200,6 +215,7 @@
                 <li v-for="library in librarys" :key="library.name">
                   <NavbarLink
                     :href="library.href"
+                    :active="$page.component === library.name"
                     :class="[
                       library.current
                         ? 'bg-gray-50 text-gray-900'
@@ -207,27 +223,36 @@
                       'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                     ]"
                   >
-                    <span
+                    <component
+                      :is="library.icon"
+                      class="active:text-teal-600"
                       :class="[
                         library.current
-                          ? 'text-gray-900 border-gray-600'
-                          : 'text-gray-400 border-gray-200 group-hover:border-teal-600 group-hover:text-teal-600',
-                        'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white',
+                          ? 'active:text-teal-600 focus:text-teal-600'
+                          : 'active:text-teal-600 focus:text-teal-600 group-hover:text-teal-600  hover:text-teal-600 hover:bg-gray-50',
+
+                        'h-6 w-6 shrink-0',
                       ]"
-                      >{{ library.initial }}</span
-                    >
-                    <span class="truncate">{{ library.name }}</span>
+                      aria-hidden="true"
+                    />
+                    {{ library.name }}
                   </NavbarLink>
                 </li>
               </ul>
             </li>
             <li class="mt-auto">
               <NavbarLink
-                href="#"
+                href="/settings"
+                :active="$page.component === 'Settings'"
                 class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50 hover:text-teal-600"
               >
                 <Cog6ToothIcon
-                  class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-teal-600"
+                  v-slot="{ active }"
+                  :class="[
+                    active
+                      ? 'h-6 w-6 shrink-0 text-teal-600'
+                      : 'h-6 w-6 shrink-0 group-hover:text-teal-600',
+                  ]"
                   aria-hidden="true"
                 />
                 Settings
@@ -375,6 +400,8 @@ import {
   XMarkIcon,
   HeartIcon,
   MagnifyingGlassIcon,
+  PlusCircleIcon,
+  HandThumbUpIcon,
 } from "@heroicons/vue/24/outline";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 
@@ -394,9 +421,20 @@ const navigation = [
   },
 ];
 const librarys = [
-  { id: 1, name: "Heroicons", href: "#", initial: "H", current: false },
-  { id: 2, name: "Tailwind Labs", href: "#", initial: "T", current: false },
-  { id: 3, name: "Workcation", href: "#", initial: "W", current: false },
+  {
+    id: 1,
+    name: "Create Playlist",
+    href: "#",
+    icon: PlusCircleIcon,
+    current: false,
+  },
+  {
+    id: 2,
+    name: "Liked Quotes",
+    href: "#",
+    icon: HandThumbUpIcon,
+    current: false,
+  },
 ];
 const userNavigation = [
   { name: "Your profile", href: "/profile" },

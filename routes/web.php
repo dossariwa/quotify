@@ -31,6 +31,10 @@ Route::get('/settings', function () {
     return Inertia::render('Settings');
 });
 
+Route::get('/search', function () {
+    return Inertia::render('Search');
+});
+
 Route::get('/header', function () {
     return Inertia::render('Header');
 });
