@@ -1,12 +1,13 @@
 <template>
-  <Layout>
-    <h1 class="text-3xl font-bold">Settings</h1>
-  </Layout>
+  <Head title="Settings" />
+
+  <h1 class="text-3xl font-bold">Settings</h1>
+  <Footer />
 </template>
 
 <script>
-import Layout from "@/Shared/Layout.vue";
+import Footer from "@/Shared/Footer.vue";
 export default {
-  components: { Layout },
+  components: { Footer },
 };
 </script>
